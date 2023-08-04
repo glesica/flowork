@@ -7,13 +7,7 @@ import (
 	"os"
 )
 
-// TODO: Put MetaManager and UUID on config but populate once loaded using "option" pattern?
-
 type Task struct {
-	// The instance UUID, assigned when the task is run. If this value
-	// is present in a configuration file, it will be ignored.
-	UUID string
-
 	// The command to run as an array of strings equivalent
 	// to an argv array, including the executable path.
 	//

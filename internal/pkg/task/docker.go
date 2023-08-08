@@ -3,15 +3,13 @@ package task
 import (
 	"fmt"
 	"github.com/glesica/flowork/internal/pkg/shell"
+	"io"
 	"os"
 	"os/user"
+	"path"
 )
 
 type DockerRunner struct{}
-
-func (d *DockerRunner) Name() string {
-	return "docker"
-}
 
 func (d *DockerRunner) Run(inst Instance) error {
 	currentUser, err := user.Current()
@@ -24,6 +22,8 @@ func (d *DockerRunner) Run(inst Instance) error {
 		return fmt.Errorf("failed to get working directory: %w", err)
 	}
 
+	innerWorkDir := inst.GetWorkDir()
+
 	command := []string{
 		"docker",
 		"run",
@@ -31,13 +31,11 @@ func (d *DockerRunner) Run(inst Instance) error {
 		"--read-only",
 	}
 
-	t := inst.Task
-
 	// Set necessary volumes (-v)
-	command = append(command, "-v", workDir+":"+t.WorkDir)
+	command = append(command, "-v", workDir+":"+innerWorkDir)
 
 	// Set working directory (-w)
-	command = append(command, "-w", t.WorkDir)
+	command = append(command, "-w", innerWorkDir)
 
 	// Set user:group (-u)
 	command = append(command, "-u", currentUser.Uid+":"+currentUser.Gid)
@@ -46,10 +44,10 @@ func (d *DockerRunner) Run(inst Instance) error {
 	// TODO: Implement environment variables
 
 	// Set image
-	command = append(command, t.Image)
+	command = append(command, inst.Image)
 
 	// TODO: Support multiple commands
-	command = append(command, t.Cmd...)
+	command = append(command, inst.Cmd...)
 
 	result, err := shell.Run(command)
 	if err != nil {
@@ -58,6 +56,31 @@ func (d *DockerRunner) Run(inst Instance) error {
 
 	if result.Code != 0 {
 		return fmt.Errorf("task failed (%s)", result.Err)
+	}
+
+	err = writeOutput(workDir, "stdout.txt", result.Out)
+	if err != nil {
+		return err
+	}
+
+	err = writeOutput(workDir, "stderr.txt", result.Err)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func writeOutput(workDir, name, data string) error {
+	outPath := path.Join(workDir, name)
+	out, err := os.Create(outPath)
+	if err != nil {
+		return fmt.Errorf("failed to open output file (%s): %w", outPath, err)
+	}
+
+	_, err = io.WriteString(out, data)
+	if err != nil {
+		return fmt.Errorf("failed to write output file (%s): %w", outPath, err)
 	}
 
 	return nil

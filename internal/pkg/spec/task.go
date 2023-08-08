@@ -3,6 +3,7 @@ package spec
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/glesica/flowork/internal/app/options"
 	"io"
 	"os"
 )
@@ -37,6 +38,8 @@ type Task struct {
 	// Inputs - files that must exist in the working directory before
 	// the command can run, optional
 	// TODO: Inputs []string `json:"inputs"`
+
+	// TODO: We could also delete everything but the outputs for efficiency
 
 	// Outputs - files that must exist in the working directory after
 	// the command has run in order to consider the task a success,
@@ -79,6 +82,17 @@ func LoadTask(data io.Reader) (Task, error) {
 	}
 
 	return c, nil
+}
+
+// GetWorkDir returns the working directory path for the task
+// (see WorkDir) but returns the default value if the field is
+// blank (the empty string).
+func (t Task) GetWorkDir() string {
+	if t.WorkDir == "" {
+		return options.DefaultTaskWorkDir
+	}
+
+	return t.WorkDir
 }
 
 // TaskSet is a collection of tasks that can be assigned to

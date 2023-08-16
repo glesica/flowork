@@ -4,7 +4,7 @@ import (
 	"github.com/glesica/flowork/internal/pkg/id"
 	"github.com/glesica/flowork/internal/pkg/spec"
 	"github.com/glesica/flowork/internal/pkg/task"
-	"golang.org/x/exp/slog"
+	"log/slog"
 )
 
 type Instance struct {

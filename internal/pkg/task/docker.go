@@ -17,12 +17,12 @@ func (d *DockerRunner) Run(inst Instance) error {
 		return fmt.Errorf("failed to get current user: %w", err)
 	}
 
-	workDir, err := os.Getwd()
+	hostWorkDir, err := os.Getwd()
 	if err != nil {
 		return fmt.Errorf("failed to get working directory: %w", err)
 	}
 
-	innerWorkDir := inst.GetWorkDir()
+	containerWorkDir := inst.GetWorkDir()
 
 	command := []string{
 		"docker",
@@ -32,10 +32,10 @@ func (d *DockerRunner) Run(inst Instance) error {
 	}
 
 	// Set necessary volumes (-v)
-	command = append(command, "-v", workDir+":"+innerWorkDir)
+	command = append(command, "-v", hostWorkDir+":"+containerWorkDir)
 
 	// Set working directory (-w)
-	command = append(command, "-w", innerWorkDir)
+	command = append(command, "-w", containerWorkDir)
 
 	// Set user:group (-u)
 	command = append(command, "-u", currentUser.Uid+":"+currentUser.Gid)
@@ -54,18 +54,18 @@ func (d *DockerRunner) Run(inst Instance) error {
 		return fmt.Errorf("failed to run docker (%v): %w", command, err)
 	}
 
+	err = writeOutput(hostWorkDir, "stdout.txt", result.Out)
+	if err != nil {
+		return fmt.Errorf("failed to write stdout.txt: %w", err)
+	}
+
+	err = writeOutput(hostWorkDir, "stderr.txt", result.Err)
+	if err != nil {
+		return fmt.Errorf("failed to write stderr.txt: %w", err)
+	}
+
 	if result.Code != 0 {
-		return fmt.Errorf("task failed (%s)", result.Err)
-	}
-
-	err = writeOutput(workDir, "stdout.txt", result.Out)
-	if err != nil {
-		return err
-	}
-
-	err = writeOutput(workDir, "stderr.txt", result.Err)
-	if err != nil {
-		return err
+		return fmt.Errorf("task failed, see stderr.txt")
 	}
 
 	return nil

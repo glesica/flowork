@@ -2,6 +2,7 @@ package shell
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"log/slog"
 	"os/exec"
@@ -22,7 +23,8 @@ func Run(cmd []string) (*Result, error) {
 	c.Stderr = &errBuf
 
 	err := c.Run()
-	if exitErr, ok := err.(*exec.ExitError); ok {
+	var exitErr *exec.ExitError
+	if errors.As(err, &exitErr) {
 		r := &Result{
 			Code: exitErr.ExitCode(),
 			Out:  outBuf.String(),

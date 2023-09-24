@@ -20,6 +20,18 @@ func main() {
 		kong.ShortUsageOnError(),
 	)
 
+	configureLogging()
+
+	switch ctx.Command() {
+	case "run <workflow>":
+		err := cmd.Run(CLI.Run, CLI.GlobalOptions)
+		if err != nil {
+			ctx.FatalIfErrorf(err)
+		}
+	}
+}
+
+func configureLogging() {
 	var level slog.Level
 	switch {
 	case CLI.Debug:
@@ -34,9 +46,4 @@ func main() {
 	})
 	logger := slog.New(handler)
 	slog.SetDefault(logger)
-
-	err := ctx.Run(CLI.GlobalOptions)
-	if err != nil {
-		ctx.FatalIfErrorf(err)
-	}
 }

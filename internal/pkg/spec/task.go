@@ -4,17 +4,28 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/glesica/flowork/internal/app/options"
+	"github.com/glesica/flowork/internal/pkg/files"
 	"io"
 	"os"
 )
 
 type Task struct {
+	// Name is a human-readable name for the task, to be used in UI and
+	// logs as a quick way to reference a specific task. For example:
+	// "parse", "train", "load data".
+	Name string `json:"name" toml:"name"`
+
+	// Desc is a human-readable description of the task, intended to be
+	// included in UIs and documentation. This should generally be about
+	// one sentence.
+	Desc string `json:"desc" toml:"desc"`
+
 	// The command to run as an array of strings equivalent
 	// to an argv array, including the executable path.
 	//
 	// Examples:
 	//   - []string{"ls", "-l", "/usr/bin"}
-	Cmd []string `json:"cmd"`
+	Cmd []string `json:"cmd" toml:"cmd"`
 
 	// The Docker image that the command will run in. The
 	// working directory will be set automatically and mounted
@@ -22,29 +33,26 @@ type Task struct {
 	//
 	// Examples:
 	//   - "debian:bookworm-slim"
-	Image string `json:"image"`
+	Image string `json:"image" toml:"image"`
 
 	// The location within the container to mount the working directory
 	// and from which the command will be run.
 	//
 	// Examples:
 	//   - "/work"
-	WorkDir string `json:"workdir"`
+	WorkDir string `json:"workdir" toml:"workdir"`
 
-	// Desc is a human-readable description of the task, intended to be
-	// included in UIs and documentation.
-	Desc string `json:"desc"`
+	// Inputs is a list of files that must exist, relative to the
+	// working directory, in order for the task to run.
+	// For now, these must be bare file names as they will only be
+	// copied directly into the working directory. In the future,
+	// full paths relative to the working directory will be supported.
+	// TODO: Support full paths for inputs
+	Inputs []files.Path `json:"inputs" toml:"inputs"`
 
-	// Inputs - files that must exist in the working directory before
-	// the command can run, optional
-	// TODO: Inputs []string `json:"inputs"`
-
-	// TODO: We could also delete everything but the outputs for efficiency
-
-	// Outputs - files that must exist in the working directory after
-	// the command has run in order to consider the task a success,
-	// optional
-	// TODO: Outputs []string `json:"outputs"`
+	// Outputs is a list of files that are guaranteed to exist, relative
+	// to the working directory, after the task has completed.
+	Outputs []files.Path `json:"outputs" toml:"outputs"`
 
 	// DiskSpaceGB indicates the required amount of disk space
 	// available on the volume where the working directory is

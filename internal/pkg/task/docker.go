@@ -2,16 +2,15 @@ package task
 
 import (
 	"fmt"
+	"log/slog"
+	"os"
+	"os/user"
+	"path/filepath"
+
 	"github.com/glesica/flowork/internal/app/options"
 	"github.com/glesica/flowork/internal/pkg/files"
 	"github.com/glesica/flowork/internal/pkg/id"
 	"github.com/glesica/flowork/internal/pkg/shell"
-	"io"
-	"log/slog"
-	"os"
-	"os/user"
-	"path"
-	"path/filepath"
 )
 
 type DockerRunner struct {
@@ -95,40 +94,16 @@ func (r *DockerRunner) ExtractFile(s files.Path, v Volume, d files.Dir) error {
 	return nil
 }
 
-func (r *DockerRunner) Run(inst Instance, v Volume) error {
+func (r *DockerRunner) Run(inst *Instance, v Volume) error {
 	currentUser, err := user.Current()
 	if err != nil {
 		return fmt.Errorf("failed to get current user: %w", err)
 	}
 
-	containerWorkDir := inst.GetWorkDir()
-
-	command := []string{
-		"docker",
-		"run",
-		"--rm",
-		//"--read-only",
+	command, err := DockerRun(inst, v, currentUser.Uid)
+	if err != nil {
+		return fmt.Errorf("failed to build docker command: %w", err)
 	}
-
-	// Set necessary volumes (-v)
-	command = append(command, "-v", string(v)+":"+containerWorkDir)
-
-	// Set working directory (-w)
-	command = append(command, "-w", containerWorkDir)
-
-	// Set user:group (-u)
-	command = append(command, "-u", currentUser.Uid+":"+currentUser.Gid)
-
-	// Set environment variables (-e)
-	// TODO: Implement environment variables
-
-	// Set image
-	command = append(command, inst.Image)
-
-	// TODO: Support multiple commands
-	command = append(command, inst.Cmd...)
-
-	slog.Debug("running command", "command", command)
 
 	result, err := shell.Run(command)
 	if err != nil {
@@ -153,21 +128,6 @@ func (r *DockerRunner) Run(inst Instance, v Volume) error {
 
 	if result.Code != 0 {
 		return fmt.Errorf("task failed, see stderr.txt")
-	}
-
-	return nil
-}
-
-func writeOutput(workDir, name, data string) error {
-	outPath := path.Join(workDir, name)
-	out, err := os.Create(outPath)
-	if err != nil {
-		return fmt.Errorf("failed to open output file (%s): %w", outPath, err)
-	}
-
-	_, err = io.WriteString(out, data)
-	if err != nil {
-		return fmt.Errorf("failed to write output file (%s): %w", outPath, err)
 	}
 
 	return nil

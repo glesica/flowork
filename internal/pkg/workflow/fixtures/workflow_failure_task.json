@@ -1,0 +1,36 @@
+{
+  "name": "Fixture",
+  "desc": "A workflow that does nothing in particular",
+  "tasks": [
+    {
+      "name": "step0",
+      "cmd": [
+        "mv",
+        "data.txt",
+        "step0.txt"
+      ],
+      "inputs": [
+        "data.txt"
+      ],
+      "outputs": [
+        "step0.txt"
+      ],
+      "image": "debian:bookworm-slim"
+    },
+    {
+      "name": "step1",
+      "cmd": [
+        "mv",
+        "wrong_file.txt",
+        "step1.txt"
+      ],
+      "inputs": [
+        "step0.txt"
+      ],
+      "outputs": [
+        "step1.txt"
+      ],
+      "image": "debian:bookworm-slim"
+    }
+  ]
+}

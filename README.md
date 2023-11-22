@@ -9,6 +9,10 @@ an executable called `flowork` in the root directory.
 
 ## Concepts
 
+Flowork attempts to be simple. Some use-cases won't fit into the Flowork
+model, and that's fine. For those cases that do fit, users only need to
+understand a few concepts in order to be productive.
+
 ### Orchestrator
 
 The machine actually running the Flowork tool.
@@ -24,7 +28,11 @@ of the task may run in parallel.
 An implementation of the `task.Runner` interface that knows how to run a
 single task on some sort of computing infrastructure. It is also
 responsible for gathering input files and recovering output files based
-on the storage mechanism used by its computing infrastructure.
+on the storage mechanism used by its infrastructure.
+
+Note that runners may run Flowork on remote machines, using Docker, in
+order to copy files around to avoid files moving through the orchestrator
+or placing requirements on worker machines beyond having Docker installed.
 
 ### Workflow
 

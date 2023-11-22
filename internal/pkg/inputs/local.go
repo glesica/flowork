@@ -2,50 +2,53 @@ package inputs
 
 import (
 	"fmt"
-	"github.com/glesica/flowork/internal/pkg/files"
 	"os"
-	"path/filepath"
+
+	"github.com/glesica/flowork/internal/pkg/files"
 )
 
 // Local provides an iterator over all the normal files in a given
 // directory. It does not traverse into subdirectories. The given
 // path must represent a directory.
-func Local(p files.Dir, filters ...Filter) (files.Iter, error) {
-	entries, err := os.ReadDir(string(p))
+//
+// TODO: This should be called Dir or something since it lists files in a directory
+// It should also work with any of the stores that support listing files (or will?)
+func Local(dir files.Dir, filters ...Filter) (Iterator, error) {
+	entries, err := os.ReadDir(string(dir))
 	if err != nil {
-		return nil, fmt.Errorf("failed to get local inputs (%s): %w", p, err)
+		return nil, fmt.Errorf("failed to get local inputs (%s): %w", dir, err)
 	}
 
-	i := 0
-	return func() (files.Path, bool) {
-		for {
-			if i >= len(entries) {
-				entries = nil
-				return "", false
-			}
-			e := entries[i]
-			i++
+	index := 0
 
-			// We only operate on regular files, for now,
-			// because it is simpler that way.
-			if e.Type() != 0 {
-				continue
-			}
+	cbi := &callbackIterator{
+		callback: func() (files.Path, bool, error) {
+			for {
+				if index >= len(entries) {
+					return "", false, nil
+				}
 
-			ep := files.Path(filepath.Join(string(p), e.Name()))
+				e := entries[index]
+				index++
 
-			accept := true
-			for _, f := range filters {
-				if !f(ep) {
-					accept = false
-					break
+				name := e.Name()
+				ep := dir.PathTo(name)
+
+				accept := true
+				for _, f := range filters {
+					if !f(ep) {
+						accept = false
+						break
+					}
+				}
+
+				if accept {
+					return dir.PathTo(name), true, nil
 				}
 			}
+		},
+		cutoff: make(chan interface{}),
+	}
 
-			if accept {
-				return ep, true
-			}
-		}
-
-	}, nil
+	return cbi.iterate, nil
 }

@@ -1,10 +1,11 @@
 package inputs
 
 import (
-	"github.com/glesica/flowork/internal/pkg/files"
 	"path/filepath"
 	"regexp"
 	"strings"
+
+	"github.com/glesica/flowork/internal/pkg/files"
 )
 
 type Filter func(p files.Path) bool

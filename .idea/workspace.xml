@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2c11e316-0c2b-40c9-8eed-80d1b777a32c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/internal/pkg/files/gcs.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/flowork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flowork.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ROADMAP.md" beforeDir="false" afterPath="$PROJECT_DIR$/ROADMAP.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/app/cmd/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/app/cmd/run.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/aws_bucket.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/files/s3.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/files.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/files/files.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/gcp_bucket.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/http.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/files/http.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/local.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/files/local.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/files/store.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/files/store.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/inputs/filter.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/inputs/filter.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/inputs/local.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/inputs/local.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/inputs/local_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/inputs/local_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/task/docker.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/task/docker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/task/instance.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/task/instance.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/task/runner.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/task/runner.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/task/task.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/task/task.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/errset.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/fixtures/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/workflow/fixtures/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/fixtures/workflow.json" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/workflow/fixtures/workflow_success.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/instance.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/pkg/workflow/instance.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/job.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/runner.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/pkg/workflow/runner_test.go" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" url="file:///opt/homebrew/opt/go/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2XJlPmM6IRkWsauZAUg4m5xW34g" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;go.sdk.automatically.set&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/georgelesica&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/pkg/orchestrator" />
+      <recent name="$PROJECT_DIR$/internal/pkg/retryer" />
+      <recent name="$PROJECT_DIR$/internal/pkg/workflow/retryer" />
+      <recent name="$PROJECT_DIR$/internal/pkg/inputs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Test.TestNewWorker in github.com/glesica/flowork/internal/pkg/orchestrator/retryer">
+    <configuration name="TestMakeJobCreator in github.com/glesica/flowork/internal/pkg/orchestrator/executor" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="flowork" />
+      <working_directory value="$PROJECT_DIR$/internal/pkg/orchestrator/executor" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestMakeJobCreator\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestNewWorker in github.com/glesica/flowork/internal/pkg/orchestrator/retryer" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="flowork" />
+      <working_directory value="$PROJECT_DIR$/internal/pkg/orchestrator/retryer" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/glesica/flowork/internal/pkg/orchestrator/retryer" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestNewWorker\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestStart in github.com/glesica/flowork/internal/pkg/orchestrator/executor" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="flowork" />
+      <working_directory value="$PROJECT_DIR$/internal/pkg/orchestrator/executor" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestStart\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestStart/should_send_a_successful_job_to_the_success_queue in github.com/glesica/flowork/internal/pkg/orchestrator/executor" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="flowork" />
+      <working_directory value="$PROJECT_DIR$/internal/pkg/orchestrator/executor" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestStart\E$/^\Qshould_send_a_successful_job_to_the_success_queue\E$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestStart/should_send_an_errored_job_to_the_error_queue in github.com/glesica/flowork/internal/pkg/orchestrator/executor" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="flowork" />
+      <working_directory value="$PROJECT_DIR$/internal/pkg/orchestrator/executor" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestStart\E$/^\Qshould_send_an_errored_job_to_the_error_queue\E$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestNewWorker in github.com/glesica/flowork/internal/pkg/orchestrator/retryer" />
+        <item itemvalue="Go Test.TestStart/should_send_an_errored_job_to_the_error_queue in github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+        <item itemvalue="Go Test.TestStart/should_send_a_successful_job_to_the_success_queue in github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+        <item itemvalue="Go Test.TestStart in github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+        <item itemvalue="Go Test.TestMakeJobCreator in github.com/glesica/flowork/internal/pkg/orchestrator/executor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/pkg/orchestrator/executor/executor.go</url>
+          <line>61</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

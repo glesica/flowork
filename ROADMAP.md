@@ -10,3 +10,5 @@ stored on any supported medium.
 ## Ideas
 
  - Allow volumes to be reused (need to be able to clear them)
+ - Need a way to warn when moving data between environments
+ - Convert all paths to URLs immediately instead of using typed strings

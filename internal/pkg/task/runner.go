@@ -41,5 +41,5 @@ type Runner interface {
 
 	// Run executes the given task using the given data volume as the
 	// task working directory.
-	Run(t Instance, v Volume) error
+	Run(t *Instance, v Volume) error
 }

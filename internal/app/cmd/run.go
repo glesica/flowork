@@ -2,6 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"math"
+	"os"
+	"path/filepath"
+	"strings"
+	"time"
+
 	"github.com/glesica/flowork/internal/app/options"
 	"github.com/glesica/flowork/internal/pkg/files"
 	"github.com/glesica/flowork/internal/pkg/id"
@@ -9,11 +15,6 @@ import (
 	"github.com/glesica/flowork/internal/pkg/spec"
 	"github.com/glesica/flowork/internal/pkg/task"
 	"github.com/glesica/flowork/internal/pkg/workflow"
-	"math"
-	"os"
-	"path/filepath"
-	"strings"
-	"time"
 )
 
 type RunOptions struct {
@@ -118,7 +119,7 @@ func Run(run *RunOptions, global GlobalOptions) error {
 		runner = &task.DockerRunner{
 			Debug:   global.Debug,
 			WorkDir: run.WorkDir,
-			Store:   &files.LocalStore{},
+			Store:   &files.Local{},
 		}
 	default:
 		return fmt.Errorf("invalid runner (%s)", run.Runner)
